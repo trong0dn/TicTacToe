@@ -7,7 +7,7 @@ public class TicTacToeModel {
     public static final boolean X = true;
     public static final boolean O = false;
 
-    public enum Status {X_WON, O_WON, TIE, UNDECIDED};
+    public enum Status {X_WON, O_WON, TIE, UNDECIDED}
 
     private char[][] grid;
     private boolean turn;
@@ -45,9 +45,10 @@ public class TicTacToeModel {
 
     private void updateStatus() {
         fullBoard++;
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (status == Status.UNDECIDED) {
+        if (status == Status.UNDECIDED) {
+            for (int i = 0; i < SIZE; i++) {
+                for (int j = 0; j < SIZE; j++) {
+
                     // Checks for winner by rows
                     if (grid[i][0] == grid[i][SIZE - 2] && grid[i][0] == grid[i][SIZE - 1]) {
                         if (grid[i][0] == 'X') {
@@ -70,8 +71,6 @@ public class TicTacToeModel {
                     }
                 }
             }
-        }
-        if (status == Status.UNDECIDED) {
             // Check for winner by diagonals
             if (grid[0][0] == grid[SIZE - 2][SIZE - 2] && grid[0][0] == grid[SIZE - 1][SIZE - 1]) {
                 if (grid[0][0] == 'X') {
