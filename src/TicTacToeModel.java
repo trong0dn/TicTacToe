@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class TicTacToeModel {
                             status = Status.O_WON;
                             System.out.println("O_WON");
                         }
+                        return;
                     }
                     // Check for winner by columns
                     else if (grid[0][j] == grid[SIZE - 2][j] && grid[0][j] == grid[SIZE - 1][j]) {
@@ -68,6 +70,7 @@ public class TicTacToeModel {
                             status = Status.O_WON;
                             System.out.println("O_WON");
                         }
+                        return;
                     }
                 }
             }
@@ -80,6 +83,7 @@ public class TicTacToeModel {
                     status = Status.O_WON;
                     System.out.println("O_WON");
                 }
+                return;
             }
             if (grid[SIZE - 1][0] == grid[SIZE - 2][SIZE - 2] && grid[SIZE - 1][0] == grid[0][SIZE - 1]) {
                 if (grid[SIZE - 1][0] == 'X') {
@@ -89,6 +93,7 @@ public class TicTacToeModel {
                     status = Status.O_WON;
                     System.out.println("O_WON");
                 }
+                return;
             }
             // Check for ties
             if (fullBoard == SIZE * SIZE) {
@@ -101,11 +106,13 @@ public class TicTacToeModel {
     public boolean getTurn() {return turn;}
 
     public void play(int x, int y) {
+        if (status != Status.UNDECIDED) return;
         if (grid[x][y] != ' ') return;
         grid[x][y] = turn? 'X' : 'O';
         updateStatus();
         for (TicTacToeView view: views) {
             view.handleTicTacToeStatusUpdate(new TicTacToeEvent(this, status, x, y));
+            view.handleTicTacToeOutcome();
         }
         changeTurn();
     }

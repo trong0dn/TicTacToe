@@ -4,11 +4,12 @@ import java.awt.*;
 public class TicTacToeFrame extends JFrame implements TicTacToeView {
 
     private JButton[][] buttons;
+    private TicTacToeModel model;
 
     public TicTacToeFrame() {
         super("Tic Tac Toe!");
         this.setLayout(new GridLayout(TicTacToeModel.SIZE,TicTacToeModel.SIZE));
-        TicTacToeModel model = new TicTacToeModel();
+        model = new TicTacToeModel();
 
         model.addTicTacToeView(this);
 
@@ -36,6 +37,18 @@ public class TicTacToeFrame extends JFrame implements TicTacToeView {
         TicTacToeModel ticTacToeModel = (TicTacToeModel) e.getSource();
         String label = ticTacToeModel.getTurn() ? "X" : "0";
         buttons[e.getX()][e.getY()].setText(label);
+    }
+
+    public void handleTicTacToeOutcome() {
+        if (model.getStatus().equals(TicTacToeModel.Status.X_WON)) {
+            JOptionPane.showMessageDialog(this, "X_WON", "Gameover", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (model.getStatus().equals(TicTacToeModel.Status.O_WON)) {
+            JOptionPane.showMessageDialog(this, "O_WON", "Gameover", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (model.getStatus().equals(TicTacToeModel.Status.TIE)){
+            JOptionPane.showMessageDialog(this, "TIE", "Gameover", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public static void main(String[] args) {
