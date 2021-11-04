@@ -51,11 +51,9 @@ public class TicTacToeModel {
                 if (grid[i][0] == grid[i][SIZE - 2] && grid[i][0] == grid[i][SIZE - 1]) {
                     if (grid[i][0] == 'X') {
                         status = Status.X_WON;
-                        System.out.println("X_WON");
                         return;
                     } else if (grid[i][0] == 'O') {
                         status = Status.O_WON;
-                        System.out.println("O_WON");
                         return;
                     }
                 }
@@ -63,11 +61,9 @@ public class TicTacToeModel {
                 else if (grid[0][j] == grid[SIZE - 2][j] && grid[0][j] == grid[SIZE - 1][j]) {
                     if (grid[0][j] == 'X') {
                         status = Status.X_WON;
-                        System.out.println("X_WON");
                         return;
                     } else if (grid[0][j] == 'O') {
                         status = Status.O_WON;
-                        System.out.println("O_WON");
                         return;
                     }
                 }
@@ -77,29 +73,24 @@ public class TicTacToeModel {
         if (grid[0][0] == grid[SIZE - 2][SIZE - 2] && grid[0][0] == grid[SIZE - 1][SIZE - 1]) {
             if (grid[0][0] == 'X') {
                 status = Status.X_WON;
-                System.out.println("X_WON");
                 return;
             } else if (grid[0][0] == 'O') {
                 status = Status.O_WON;
-                System.out.println("O_WON");
                 return;
             }
         }
         if (grid[SIZE - 1][0] == grid[SIZE - 2][SIZE - 2] && grid[SIZE - 1][0] == grid[0][SIZE - 1]) {
             if (grid[SIZE - 1][0] == 'X') {
                 status = Status.X_WON;
-                System.out.println("X_WON");
                 return;
             } else if (grid[SIZE - 1][0] == 'O') {
                 status = Status.O_WON;
-                System.out.println("O_WON");
                 return;
             }
         }
         // Check for ties
         if (fullBoard == SIZE * SIZE) {
             status = Status.TIE;
-            System.out.println("TIE");
             return;
         }
         status = Status.UNDECIDED;
