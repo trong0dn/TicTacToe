@@ -36,6 +36,15 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
+    public void testGetStatusAfterFourthMove() {
+        ticTacToeModel.play(0,0);
+        ticTacToeModel.play(1,1);
+        ticTacToeModel.play(2,2);
+        ticTacToeModel.play(0,2);
+        assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
     public void testGetStatusAfterPlayingSameMoveTwice() {
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,2);
@@ -235,6 +244,48 @@ public class TicTacToeModelTest {
         ticTacToeModel.play(1,2);
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,1);
+        assertEquals(TicTacToeModel.Status.TIE, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
+    public void testGetStatusTie3() {
+        ticTacToeModel.play(2,2);       // O | X | O
+        ticTacToeModel.play(1,2);       // O | X | X
+        ticTacToeModel.play(1,1);       // X | O | X
+        ticTacToeModel.play(0,0);
+        ticTacToeModel.play(2,1);
+        ticTacToeModel.play(2,0);
+        ticTacToeModel.play(1,0);
+        ticTacToeModel.play(0,1);
+        ticTacToeModel.play(0,2);
+        assertEquals(TicTacToeModel.Status.TIE, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
+    public void testGetStatusTie4() {
+        ticTacToeModel.play(1,2);       // X | O | O
+        ticTacToeModel.play(2,0);       // O | X | X
+        ticTacToeModel.play(1,1);       // X | X | O
+        ticTacToeModel.play(0,1);
+        ticTacToeModel.play(0,0);
+        ticTacToeModel.play(2,2);
+        ticTacToeModel.play(2,1);
+        ticTacToeModel.play(1,0);
+        ticTacToeModel.play(0,2);
+        assertEquals(TicTacToeModel.Status.TIE, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
+    public void testGetStatusTie5() {
+        ticTacToeModel.play(1,0);       // O | X | X
+        ticTacToeModel.play(0,0);       // X | O | O
+        ticTacToeModel.play(0,2);       // X | O | X
+        ticTacToeModel.play(1,2);
+        ticTacToeModel.play(2,2);
+        ticTacToeModel.play(1,1);
+        ticTacToeModel.play(0,1);
+        ticTacToeModel.play(2,1);
+        ticTacToeModel.play(2,0);
         assertEquals(TicTacToeModel.Status.TIE, ticTacToeModel.getStatus());
     }
 }
