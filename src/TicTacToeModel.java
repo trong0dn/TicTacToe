@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,61 +45,64 @@ public class TicTacToeModel {
 
     private void updateStatus() {
         fullBoard++;
-        if (status == Status.UNDECIDED) {
-            for (int i = 0; i < SIZE; i++) {
-                for (int j = 0; j < SIZE; j++) {
-
-                    // Checks for winner by rows
-                    if (grid[i][0] == grid[i][SIZE - 2] && grid[i][0] == grid[i][SIZE - 1]) {
-                        if (grid[i][0] == 'X') {
-                            status = Status.X_WON;
-                            System.out.println("X_WON");
-                        } else if (grid[i][0] == 'O') {
-                            status = Status.O_WON;
-                            System.out.println("O_WON");
-                        }
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                // Checks for winner by rows
+                if (grid[i][0] == grid[i][SIZE - 2] && grid[i][0] == grid[i][SIZE - 1]) {
+                    if (grid[i][0] == 'X') {
+                        status = Status.X_WON;
+                        System.out.println("X_WON");
                         return;
-                    }
-                    // Check for winner by columns
-                    else if (grid[0][j] == grid[SIZE - 2][j] && grid[0][j] == grid[SIZE - 1][j]) {
-                        if (grid[0][j] == 'X') {
-                            status = Status.X_WON;
-                            System.out.println("X_WON");
-                        } else if (grid[0][j] == 'O') {
-                            status = Status.O_WON;
-                            System.out.println("O_WON");
-                        }
+                    } else if (grid[i][0] == 'O') {
+                        status = Status.O_WON;
+                        System.out.println("O_WON");
                         return;
                     }
                 }
-            }
-            // Check for winner by diagonals
-            if (grid[0][0] == grid[SIZE - 2][SIZE - 2] && grid[0][0] == grid[SIZE - 1][SIZE - 1]) {
-                if (grid[0][0] == 'X') {
-                    status = Status.X_WON;
-                    System.out.println("X_WON");
-                } else if (grid[0][0] == 'O') {
-                    status = Status.O_WON;
-                    System.out.println("O_WON");
+                // Check for winner by columns
+                else if (grid[0][j] == grid[SIZE - 2][j] && grid[0][j] == grid[SIZE - 1][j]) {
+                    if (grid[0][j] == 'X') {
+                        status = Status.X_WON;
+                        System.out.println("X_WON");
+                        return;
+                    } else if (grid[0][j] == 'O') {
+                        status = Status.O_WON;
+                        System.out.println("O_WON");
+                        return;
+                    }
                 }
-                return;
-            }
-            if (grid[SIZE - 1][0] == grid[SIZE - 2][SIZE - 2] && grid[SIZE - 1][0] == grid[0][SIZE - 1]) {
-                if (grid[SIZE - 1][0] == 'X') {
-                    status = Status.X_WON;
-                    System.out.println("X_WON");
-                } else if (grid[SIZE - 1][0] == 'O') {
-                    status = Status.O_WON;
-                    System.out.println("O_WON");
-                }
-                return;
-            }
-            // Check for ties
-            if (fullBoard == SIZE * SIZE) {
-                status = Status.TIE;
-                System.out.println("TIE");
             }
         }
+        // Check for winner by diagonals
+        if (grid[0][0] == grid[SIZE - 2][SIZE - 2] && grid[0][0] == grid[SIZE - 1][SIZE - 1]) {
+            if (grid[0][0] == 'X') {
+                status = Status.X_WON;
+                System.out.println("X_WON");
+                return;
+            } else if (grid[0][0] == 'O') {
+                status = Status.O_WON;
+                System.out.println("O_WON");
+                return;
+            }
+        }
+        if (grid[SIZE - 1][0] == grid[SIZE - 2][SIZE - 2] && grid[SIZE - 1][0] == grid[0][SIZE - 1]) {
+            if (grid[SIZE - 1][0] == 'X') {
+                status = Status.X_WON;
+                System.out.println("X_WON");
+                return;
+            } else if (grid[SIZE - 1][0] == 'O') {
+                status = Status.O_WON;
+                System.out.println("O_WON");
+                return;
+            }
+        }
+        // Check for ties
+        if (fullBoard == SIZE * SIZE) {
+            status = Status.TIE;
+            System.out.println("TIE");
+            return;
+        }
+        status = Status.UNDECIDED;
     }
 
     public boolean getTurn() {return turn;}
