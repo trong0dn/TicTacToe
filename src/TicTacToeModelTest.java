@@ -5,30 +5,30 @@ public class TicTacToeModelTest {
     TicTacToeModel ticTacToeModel;
 
     @org.junit.Before
-    public void setUp() throws Exception {
+    public void setUp() {
         ticTacToeModel = new TicTacToeModel();
     }
 
     @org.junit.Test
-    public void getStatusForInitialTicTacToe() {
+    public void testGetStatusForInitialTicTacToe() {
         assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
     }
 
     @org.junit.Test
-    public void getStatusAfterFirstMove() {
-        ticTacToeModel.play(1,1);
-        assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
-    }
-
-    @org.junit.Test
-    public void getStatusAfterSecondMove() {
-        ticTacToeModel.play(0,0);
+    public void testGetStatusAfterFirstMove() {
         ticTacToeModel.play(1,1);
         assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
     }
 
     @org.junit.Test
-    public void getStatusAfterThirdMove() {
+    public void testGetStatusAfterSecondMove() {
+        ticTacToeModel.play(0,0);
+        ticTacToeModel.play(1,1);
+        assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
+    public void testGetStatusAfterThirdMove() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(2,2);
@@ -36,14 +36,14 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusAfterPlayingSameMoveTwice() {
+    public void testGetStatusAfterPlayingSameMoveTwice() {
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,2);
         assertEquals(TicTacToeModel.Status.UNDECIDED, ticTacToeModel.getStatus());
     }
 
     @org.junit.Test
-    public void getStatusXWinningFirstColumn() {
+    public void testGetStatusXWinningFirstColumn() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(0,1);
@@ -53,7 +53,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningSecondColumn() {
+    public void testGetStatusXWinningSecondColumn() {
         ticTacToeModel.play(1,0);
         ticTacToeModel.play(0,1);
         ticTacToeModel.play(1,1);
@@ -63,7 +63,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningThirdColumn() {
+    public void testGetStatusXWinningThirdColumn() {
         ticTacToeModel.play(2,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(2,1);
@@ -73,7 +73,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusOWinningFirstColumn() {
+    public void testGetStatusOWinningFirstColumn() {
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(0,1);
         ticTacToeModel.play(2,1);
@@ -84,7 +84,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatus0WinningSecondColumn() {
+    public void testGetStatus0WinningSecondColumn() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(2,0);
@@ -95,7 +95,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatus0WinningThirdColumn() {
+    public void testGetStatus0WinningThirdColumn() {
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(2,0);
         ticTacToeModel.play(0,0);
@@ -106,7 +106,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningForwardDiagonal() {
+    public void testGetStatusXWinningForwardDiagonal() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(2,0);
         ticTacToeModel.play(1,1);
@@ -117,7 +117,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningBackwardDiagonal() {
+    public void testGetStatusXWinningBackwardDiagonal() {
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,1);
         ticTacToeModel.play(1,1);
@@ -128,7 +128,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatus0WinningForwardDiagonal() {
+    public void testGetStatus0WinningForwardDiagonal() {
         ticTacToeModel.play(1,0);
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(2,0);
@@ -139,7 +139,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatus0WinningBackwardDiagonal() {
+    public void testGetStatus0WinningBackwardDiagonal() {
         ticTacToeModel.play(0,1);
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,1);
@@ -150,7 +150,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningFirstRow() {
+    public void testGetStatusXWinningFirstRow() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(1,0);
@@ -160,7 +160,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningSecondRow() {
+    public void testGetStatusXWinningSecondRow() {
         ticTacToeModel.play(0,1);
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(1,1);
@@ -170,7 +170,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusXWinningThirdRow() {
+    public void testGetStatusXWinningThirdRow() {
         ticTacToeModel.play(0,2);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(1,2);
@@ -180,7 +180,7 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatusOWinningFirstRow() {
+    public void testGetStatusOWinningFirstRow() {
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(2,1);
@@ -191,13 +191,24 @@ public class TicTacToeModelTest {
     }
 
     @org.junit.Test
-    public void getStatus0WinningSecondRow() {
+    public void testGetStatus0WinningSecondRow() {
         ticTacToeModel.play(0,0);
         ticTacToeModel.play(0,1);
         ticTacToeModel.play(2,0);
         ticTacToeModel.play(1,1);
         ticTacToeModel.play(2,2);
         ticTacToeModel.play(2,1);
+        assertEquals(TicTacToeModel.Status.O_WON, ticTacToeModel.getStatus());
+    }
+
+    @org.junit.Test
+    public void testGetStatus0WinningThirdRow() {
+        ticTacToeModel.play(0,0);
+        ticTacToeModel.play(0,2);
+        ticTacToeModel.play(1,1);
+        ticTacToeModel.play(1,2);
+        ticTacToeModel.play(1,0);
+        ticTacToeModel.play(2,2);
         assertEquals(TicTacToeModel.Status.O_WON, ticTacToeModel.getStatus());
     }
 
