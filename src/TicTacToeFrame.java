@@ -10,9 +10,7 @@ public class TicTacToeFrame extends JFrame implements TicTacToeView {
         super("Tic Tac Toe!");
         this.setLayout(new GridLayout(TicTacToeModel.SIZE,TicTacToeModel.SIZE));
         model = new TicTacToeModel();
-
         model.addTicTacToeView(this);
-
         //TicTacToeController ticTacToeController = new TicTacToeController(model);
 
         buttons = new JButton[TicTacToeModel.SIZE][TicTacToeModel.SIZE];
@@ -39,6 +37,7 @@ public class TicTacToeFrame extends JFrame implements TicTacToeView {
         buttons[e.getX()][e.getY()].setText(label);
     }
 
+    @Override
     public void handleTicTacToeOutcome() {
         if (model.getStatus().equals(TicTacToeModel.Status.X_WON)) {
             JOptionPane.showMessageDialog(this, "X_WON", "Gameover", JOptionPane.INFORMATION_MESSAGE);

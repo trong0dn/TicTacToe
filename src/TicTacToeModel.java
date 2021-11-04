@@ -69,7 +69,7 @@ public class TicTacToeModel {
                 }
             }
         }
-        // Check for winner by diagonals
+        // Check for winner by backward diagonal
         if (grid[0][0] == grid[SIZE - 2][SIZE - 2] && grid[0][0] == grid[SIZE - 1][SIZE - 1]) {
             if (grid[0][0] == 'X') {
                 status = Status.X_WON;
@@ -79,6 +79,7 @@ public class TicTacToeModel {
                 return;
             }
         }
+        // Check for winner by forward diagonal
         if (grid[SIZE - 1][0] == grid[SIZE - 2][SIZE - 2] && grid[SIZE - 1][0] == grid[0][SIZE - 1]) {
             if (grid[SIZE - 1][0] == 'X') {
                 status = Status.X_WON;
@@ -91,9 +92,7 @@ public class TicTacToeModel {
         // Check for ties
         if (fullBoard == SIZE * SIZE) {
             status = Status.TIE;
-            return;
         }
-        status = Status.UNDECIDED;
     }
 
     public boolean getTurn() {return turn;}
